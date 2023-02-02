@@ -1,0 +1,14 @@
+.navbar-component {
+  background-color: rgb(223, 222, 222) !important;
+
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.logo {
+  width: 65px;
+  height: 40px;
+}
+.nav-link,
+.navbar-text {
+  font-weight: bold !important;
+}

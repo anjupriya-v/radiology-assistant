@@ -1,0 +1,64 @@
+{% extends "./base.html" %} {% block base %}
+<link href="{{url_for('static',filename='css/footer.css')}}" rel="stylesheet" />
+<footer id="primary-footer">
+  <div class="container footer-widget-area">
+    <div class="row">
+      <div class="col-md-4 p-3 center-content">
+        <div class="footer-widget-heading">
+          <img src="../static/images/Logo.png" class="footer-logo logo" />
+        </div>
+        <h4>Radiology Assistant</h4>
+
+        <p class="system-desc">
+          Hand gesture recognition of radiology images through sterile browsing
+        </p>
+      </div>
+      <div class="col-md-4 p-3 center-content">
+        <div class="footer-widget-heading">
+          <h4>Quick Links</h4>
+        </div>
+        <ul class="linkediting">
+          <li>
+            <a href="#"><i class="fa fa-angle-right"></i> About Us</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-angle-right"></i> Contact Us</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-angle-right"></i> Feature</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-angle-right"></i> Our Team</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 p-3 center-content social-icons-div">
+        <div class="footer-widget-heading">
+          <h4>Follow us:</h4>
+        </div>
+        <div class="footer-social-icon">
+          <a href="https://www.facebook.com/"
+            ><i class="fa fa-facebook-f circle-icon"></i
+          ></a>
+          <a href="https://www.instagram.com/"
+            ><i class="fa fa-instagram circle-icon"></i
+          ></a>
+          <a href="https://twitter.com/"
+            ><i class="fa fa-twitter circle-icon"></i
+          ></a>
+          <a href="https://www.linkedin.com/"
+            ><i class="fa fa-linkedin circle-icon"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+  <div class="copyright-area d-flex align-items-center justify-content-center">
+    <div class="copyright-text text-left">
+      <p>© 2023 Radiology Assistant. All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+{%endblock%}

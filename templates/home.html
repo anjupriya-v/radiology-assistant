@@ -1,0 +1,102 @@
+<!-- <html>
+
+
+<link href="{{url_for('static',filename='css/home.css')}}" rel="stylesheet">
+
+<body>
+<h1 style="color: rgb(193, 207, 207);">
+  <table style="width:100%">
+    <tr>
+      <th><img src="https://media.tenor.com/images/30169e4a670daf12443df7d2dd140176/tenor.gif" alt="NOT AVAILABLE" width="300" height="300"></th>
+      <th> <iframe width="780" height="440" src="https://www.youtube.com/embed/nD621G8u6oc?start=3&loop=1&autoplay=1&mute=1&controls=0">
+      </iframe><br></th>
+      <th></th> 
+    </tr>
+  </table>
+    <br>
+    <span>HAND   GESTURE   RECOGNITION</span>
+  </br>
+    <span>OF</span>
+  </br>
+    <span>RADIOLOGY   IMAGES</span>
+  </br>
+    <span>THROUGH</span>
+  </br>
+    <span>STERILE   BROWSING</span>
+    
+</h1>
+<div class="header">    
+<div style="width:50%;float:left;font-size:2vw;text-align:left;color:#c4dfd7; padding-top:1%;padding-left:5%;"><b>HAND GESTURE RECOGNITION</b></div>
+  <div class="topnav-right"style="padding-top:0.5%;color:white">
+    <a  class="active" href="{{ url_for('home')}}"><u>Home</u></a>
+    <a  class="active" href="{{ url_for('intro')}}">Introduction</a>
+    <a  class="active" href="{{ url_for('image1')}}">Launch</a>
+  </div>
+</div>
+
+</body>
+
+</html> -->
+{% extends "./base.html" %} {% block base %} {%include "./navbar.html" %}
+<link href="{{url_for('static',filename='css/home.css')}}" rel="stylesheet" />
+
+<div class="bg-image">
+  <div class="main-heading-div">
+    <h1 class="main-heading">RADIOLOGY ASSISTANT</h1>
+    <p class="sub-heading">
+      Hand Gesture Recognition of radiology images through sterile browsing
+    </p>
+    <div class="home-page-button">
+      <button type="button" class="btn btn-info">Get Started</button>
+      <button
+        type="button"
+        class="btn btn-outline-info"
+        data-toggle="modal"
+        data-target="#exampleModalCenter"
+      >
+        Watch Video
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Real time example of our system
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe
+          class="iframe-video"
+          src="https://www.youtube.com/embed/nD621G8u6oc?start=3&loop=1&autoplay=1&mute=1&controls=0"
+        >
+        </iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{%include "./features.html" %} {%include "./teammembers.html" %} {%include
+"./contact.html" %} {%include "./footer.html" %} {%endblock%}

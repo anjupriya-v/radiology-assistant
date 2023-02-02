@@ -1,0 +1,148 @@
+/* default list style css */
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul li {
+  list-style: none;
+}
+
+/* main footer css */
+#primary-footer {
+  background-color: #edf7fa;
+}
+
+.footer-widget-area {
+  padding: 50px 0;
+}
+
+/* main footer inner css */
+
+.footer-widget-area p {
+  font-size: 20px;
+}
+
+.footer-widget-area li {
+  margin-top: 10px;
+}
+
+.footer-widget-area li a {
+  font-size: 20px;
+  color: var(--black);
+}
+
+.footer-widget-area li a:hover {
+  text-decoration: none;
+  color: #00d07e;
+}
+
+.footer-widget-heading h4 {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.linkediting .fa {
+  color: #21bf73;
+}
+
+.footer-social-icon .social-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.circle-icon {
+  background: #ccf6c8;
+  color: #21bf73;
+  padding: 12px;
+  border-radius: 50%;
+  margin-left: 5px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+}
+
+/* footer credit css */
+
+.copyright-area {
+  background-color: #edf7fa;
+  padding: 20px 0;
+}
+
+.copyright-text p {
+  font-size: 18px;
+}
+
+.copyright-text a {
+  color: #21bf73;
+  font-weight: 600;
+}
+
+.footer-menus li {
+  display: inline-flex;
+  margin-left: 20px;
+}
+
+.footer-menus li a {
+  font-size: 18px;
+  color: var(--black);
+}
+.footer-logo {
+  margin-bottom: 1em;
+}
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.system-desc {
+  text-align: center;
+}
+.social-icons-div {
+  justify-content: flex-start;
+}
+/*media quries*/
+
+@media (max-width: 1199.98px) {
+}
+
+@media (max-width: 991.98px) {
+  .footer-social-icon span {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .copyright-text p {
+    text-align: center;
+  }
+
+  .footer-menus ul {
+    text-align: center;
+  }
+
+  .footer-social-icon span {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .footer-widget-area {
+    padding: 0 20px;
+  }
+
+  .copyright-text p {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .footer-menus ul {
+    text-align: center;
+  }
+
+  .footer-menus ul li a {
+    font-size: 16px;
+  }
+}

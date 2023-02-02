@@ -1,0 +1,100 @@
+.team-members-div {
+  margin-top: 6em;
+}
+.profile-card {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.team-members-heading {
+  margin-bottom: 1.5em;
+  text-align: center;
+}
+
+.proPic {
+  height: 100px !important;
+  width: 120px !important;
+  padding: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.proDark {
+  border: 1px solid white;
+}
+
+.cardBorderCorners {
+  border-radius: 50px 25px !important;
+  width: 18rem;
+}
+.darkCard {
+  background-color: #edf7fa !important;
+}
+/* 
+
+.lightCard {
+  background-color: #ffffff;
+}
+
+.darkTitle {
+  margin-top: 10px;
+  color: #ebecf5;
+  text-align: center;
+}
+
+.lightTitle {
+  margin-top: 10px;
+  color: #2c2c2c;
+  text-align: center;
+}
+
+.darkSubTitle {
+  color: #7e76b6;
+  text-align: center;
+} */
+
+/* .lightSubTitle {
+  color: #37355b;
+  text-align: center;
+}
+
+.darkDesc {
+  margin-top: 20px;
+  color: #b8b7d3;
+  text-align: center;
+}
+
+.lightDesc {
+  margin-top: 20px;
+  color: #333333;
+  text-align: center;
+} */
+
+.darkMail {
+  margin-top: 20px;
+  color: #dedcf4;
+  text-align: center;
+}
+
+.darkMailText {
+  padding: 2px;
+  background-color: #6b62b9;
+}
+
+.social {
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.attributeText {
+  margin-top: 20px;
+  text-align: center;
+  color: #25235c;
+}
+.about-team-member {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
