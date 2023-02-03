@@ -25,12 +25,13 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-mongoDB=pymongo.MongoClient(os.environ.get('MONGODB_URL'),'','')
+mongoDB=pymongo.MongoClient(os.environ.get('MONGODB_URL'))
 db=mongoDB['Radiology_Assistant']
 account=db.Account
 
 app = Flask(__name__,template_folder="templates") # initializing a flask app
-app.secret_key=os.environ.get('SECRET_KEY'),'',''
+SECRET_KEY = os.environ.get("SECRET_KEY")
+app.secret_key=SECRET_KEY
 # Loading the model
 model=load_model('gesture.h5')
 print("Loaded model from disk")

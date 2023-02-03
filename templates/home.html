@@ -60,4 +60,16 @@
   </div>
 </div>
 {%include "./features.html" %} {%include "./teammembers.html" %} {%include
-"./contact.html" %} {%include "./footer.html" %} {%endblock%}
+"./contact.html" %} {%include "./footer.html" %} {% if not loggedIn %}
+<div class="not-login">
+  <div class="alert alert-danger" role="alert">
+    Please Login to use our Service
+  </div>
+</div>
+{%endif%} {% if data and data['sessionLoggedIn'] %}
+<div class="not-login">
+  <div class="alert alert-success" role="alert">
+    Logged in as {{data['userInfo']['email']}}
+  </div>
+</div>
+{%endif%} {%endblock%}
