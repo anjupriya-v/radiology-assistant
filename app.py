@@ -21,6 +21,13 @@ print("Loaded model from disk")
 def home():
     return render_template('home.html')#rendering the home page
 
+@app.route('/login/')
+def login():
+    return render_template('login.html')
+
+@app.route('/signup/')
+def signup():
+    return render_template('signup.html')
 
 @app.route('/intro') # routes to the intro page
 def intro():

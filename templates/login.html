@@ -1,0 +1,40 @@
+{% extends "./base.html" %} {% block base %}
+<link href="{{url_for('static',filename='css/login.css')}}" rel="stylesheet" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<div class="login-div">
+  <div class="login-box">
+    <div class="logo-on-loginpage">
+      <img src="../static/images/Logo.png" class="login-logo logo" />
+      <h4>Radiology Assistant</h4>
+    </div>
+    <hr />
+    <h2>Login</h2>
+
+    <form>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+        <input type="email" id="email" placeholder="Email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <i class="fa fa-lock" aria-hidden="true"></i>
+        <input
+          type="password"
+          id="password"
+          placeholder="Your password"
+          required
+        />
+      </div>
+    </form>
+    <div>
+      <a href="#" class="btn">Log In</a>
+    </div>
+    <div>New User?<a href="/signup/" class="signup"> Click to signup </a></div>
+    <div><a href="/" class="home"> Back to Home </a></div>
+  </div>
+</div>
+{%endblock%}
