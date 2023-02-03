@@ -15,7 +15,11 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse navbar-collapse font-weight-bold" id="navbarText">
+      {%if data and data['sessionLoggedIn']%} Welcome,
+      <span>{{data['userInfo']['fullName']}}</span>
+      {%endif%}
+
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#"
@@ -31,9 +35,27 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Contact us</a>
         </li>
+        {% if not loggedIn %}
         <li class="nav-item">
           <a class="nav-link" href="/login/">Login</a>
         </li>
+        {%endif%} {% if loggedIn %}
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn nav-link dropdown-button dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            More
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="/profile/" class="dropdown-item" type="button">Profile</a>
+            <a href="/logout/" class="dropdown-item" type="button">Logout</a>
+          </div>
+        </div>
+        {%endif%}
       </ul>
     </div>
   </div>

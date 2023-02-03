@@ -14,16 +14,26 @@
 
     <h2>Sign Up</h2>
 
-    <form>
+    <form
+      action="http://localhost:5000/signup/"
+      autocomplete="off"
+      method="POST"
+    >
       <div class="form-group">
         <label for="name">Name</label>
         <i class="fa fa-user" aria-hidden="true"></i>
-        <input type="name" id="name" placeholder="Name" required />
+        <input type="name" name="name" id="name" placeholder="Name" required />
       </div>
       <div class="form-group">
         <label for="email">Email</label>
         <i class="fa fa-envelope" aria-hidden="true"></i>
-        <input type="email" id="email" placeholder="Email" required />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email"
+          required
+        />
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -31,14 +41,19 @@
         <input
           type="password"
           id="password"
+          name="password"
           placeholder="Your password"
           required
         />
       </div>
+      {%if signupMessage %}
+      <div class="alert alert-danger" role="alert">{{signupMessage}}</div>
+      {%endif %}
+      <div class="submit-button-div">
+        <button type="submit" class="btn">signup</button>
+      </div>
     </form>
-    <div>
-      <a href="#" class="btn">signup</a>
-    </div>
+
     <div>
       Already an user?<a href="/login/" class="signup">
         Click here to sign in

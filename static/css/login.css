@@ -17,7 +17,7 @@ body {
 
 .login-box {
   height: min-content;
-  width: 400px;
+  width: 500px;
   border-radius: 25px;
   background-color: #ffff;
   padding: 40px;
@@ -103,7 +103,6 @@ form .form-group input {
   border-radius: 25px;
   cursor: pointer;
   margin-top: 2px;
-  margin-right: auto;
   margin-bottom: 15px;
 }
 .btn:active,
@@ -123,6 +122,12 @@ a {
 }
 .login-div {
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.submit-button-div {
   display: flex;
   align-items: center;
   justify-content: center;

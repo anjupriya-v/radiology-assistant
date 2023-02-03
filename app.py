@@ -1,4 +1,6 @@
-from flask import Flask,render_template,request
+from functools import wraps
+from http.client import HTTPException
+from flask import Flask,render_template,request,redirect,session,url_for,jsonify 
 # Flask-It is our framework which we are going to use to run/serve our application.
 #request-for accessing file which was uploaded by the user on our application.
 import operator
@@ -6,12 +8,29 @@ import cv2 # opencv library
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import numpy as np
-
-from tensorflow.keras.models import load_model#to load our trained model
+from passlib.hash import  pbkdf2_sha256
+# from tensorflow.keras.models import load_model#to load our trained model
+from tensorflow import keras
+from keras.layers import Dense
+from keras.models import Sequential, load_model
 import os
 from werkzeug.utils import secure_filename
+import pymongo
+import json
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+mongoDB=pymongo.MongoClient(os.environ.get('MONGODB_URL'),'','')
+db=mongoDB['Radiology_Assistant']
+account=db.Account
 
 app = Flask(__name__,template_folder="templates") # initializing a flask app
+app.secret_key=os.environ.get('SECRET_KEY'),'',''
 # Loading the model
 model=load_model('gesture.h5')
 print("Loaded model from disk")
@@ -19,26 +38,95 @@ print("Loaded model from disk")
 
 @app.route('/')# route to display the home page
 def home():
-    return render_template('home.html')#rendering the home page
+    if(session and session['logged_in']):
+        data=request.args.get('data')
+        return render_template('home.html',data=eval(data),loggedIn=True)#rendering the home page
+    else:
+        return render_template('home.html',loggedIn=False)
 
-@app.route('/login/')
+# @app.route('/login/',method=['GET'])
+# def login():
+#     return render_template('login.html')
+
+# @app.route('/signup/')
+# def signup():
+#     return render_template('signup.html')
+
+
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if('logged_in' in session):
+            return f(*args, **kwargs)
+        else:
+            return redirect('/')
+    return wrap
+
+
+def start_session(userInfo):
+    del userInfo['_id']
+    del userInfo['password']
+    session['logged_in']=True
+    session['user']=userInfo
+    print(session['logged_in'])
+    return redirect(url_for('home',data={"sessionLoggedIn":session['logged_in'],"userInfo":session['user']}))
+
+
+@app.route('/login/',methods=['POST','GET'])
 def login():
-    return render_template('login.html')
+    if request.method=="GET":
+        return render_template('login.html')
+    if request.method=="POST":
+        email=request.form.get("email")
+        password=request.form.get("password")
+        if(account.find_one({"email":email})):
+            user=account.find_one({"email":email})
+            if(user and pbkdf2_sha256.verify(password,user['password'])):
+                return start_session(user)
+            else:
+                return render_template('login.html',loginMessage="Password is incorrect")
+        return render_template('login.html',loginMessage='Sorry, user with this email id does not exist')
+    else:
+        return render_template('login.html',loginMessage='Sign In Failed!')
 
-@app.route('/signup/')
+
+@app.route('/signup/',methods=['POST','GET'])
 def signup():
-    return render_template('signup.html')
+    if request.method=="GET":
+        return render_template('signup.html')   
+    if request.method=="POST":
+        userInfo={
+        "name":request.form.get('name'),
+        "email":request.form.get('email'),
+        "password":request.form.get('password'),
+        }
+        userInfo['password']=pbkdf2_sha256.encrypt(userInfo['password'])
+        if(account.find_one({"email":userInfo['email']})):
+            return render_template('signup.html',signupMessage='Sorry,user with this email already exist')
+        if(account.insert_one(userInfo)):
+            return render_template('login.html',signupSuccess='Your account has been registered! Please log in')
+    else:
+        return render_template("signup.html",signupMessage='signup failed')
 
-@app.route('/intro') # routes to the intro page
-def intro():
-    return render_template('intro.html')#rendering the intro page
 
-@app.route('/image1',methods=['GET','POST'])# routes to the index html
-def image1():
-    return render_template("launch.html")
+@app.route('/logout/',methods=["GET"])
+def logout():
+    if request.method=="GET":
+        session.clear()
+    return redirect(url_for('home'))
+
+
+# @app.route('/intro') # routes to the intro page
+# def intro():
+#     return render_template('intro.html')#rendering the intro page
+
+# @app.route('/image1',methods=['GET','POST'])# routes to the index html
+# def image1():
+#     return render_template("launch.html")
 
 
 @app.route('/predict',methods=['GET', 'POST'])# route to show the predictions in a web UI
+@login_required
 def launch():
     if request.method == 'POST':
         print("inside image")
