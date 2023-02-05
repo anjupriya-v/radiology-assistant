@@ -1,6 +1,6 @@
 from functools import wraps
 from http.client import HTTPException
-from flask import Flask,render_template,request,redirect,session,url_for,jsonify 
+from flask import Flask,render_template,request,redirect,session,url_for,flash
 # Flask-It is our framework which we are going to use to run/serve our application.
 #request-for accessing file which was uploaded by the user on our application.
 import operator
@@ -40,8 +40,8 @@ print("Loaded model from disk")
 @app.route('/')# route to display the home page
 def home():
     if(session and session['logged_in']):
-        data=request.args.get('data')
-        return render_template('home.html',data=eval(data),loggedIn=True)#rendering the home page
+
+        return render_template('home.html',data=session['user'],loggedIn=session['logged_in'])#rendering the home page
     else:
         return render_template('home.html',loggedIn=False)
 
@@ -70,12 +70,15 @@ def start_session(userInfo):
     session['logged_in']=True
     session['user']=userInfo
     print(session['logged_in'])
-    return redirect(url_for('home',data={"sessionLoggedIn":session['logged_in'],"userInfo":session['user']}))
+    flash('This is a demo message.','login')
+    return redirect(url_for('home'))
 
 
 @app.route('/login/',methods=['POST','GET'])
 def login():
     if request.method=="GET":
+        if(session and session['logged_in']):
+            return redirect(url_for('home'))
         return render_template('login.html')
     if request.method=="POST":
         email=request.form.get("email")
@@ -94,6 +97,8 @@ def login():
 @app.route('/signup/',methods=['POST','GET'])
 def signup():
     if request.method=="GET":
+        if(session and session['logged_in']):
+            return redirect(url_for('home'))
         return render_template('signup.html')   
     if request.method=="POST":
         userInfo={
@@ -114,21 +119,22 @@ def signup():
 def logout():
     if request.method=="GET":
         session.clear()
-    return redirect(url_for('home'))
+    return redirect(url_for('login'))
 
 
 # @app.route('/intro') # routes to the intro page
 # def intro():
 #     return render_template('intro.html')#rendering the intro page
 
-# @app.route('/image1',methods=['GET','POST'])# routes to the index html
-# def image1():
-#     return render_template("launch.html")
-
-
-@app.route('/predict',methods=['GET', 'POST'])# route to show the predictions in a web UI
+@app.route('/launch/',methods=['GET','POST'])# routes to the index html
 @login_required
 def launch():
+    return render_template("launch.html")
+
+
+@app.route('/predict/',methods=['GET', 'POST'])# route to show the predictions in a web UI
+@login_required
+def predict():
     if request.method == 'POST':
         print("inside image")
         f = request.files['image']
@@ -242,7 +248,7 @@ def launch():
          
         cap.release()
         cv2.destroyAllWindows()
-    return render_template("home.html")
+    return render_template("launch.html")
      
 if __name__ == "__main__":
    # running the app

@@ -1,5 +1,5 @@
 <link href="{{url_for('static',filename='css/navbar.css')}}" rel="stylesheet" />
-<nav class="navbar navbar-expand-lg navbar-light navbar-component">
+<nav class="navbar navbar-expand-lg navbar-light navbar-component fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#">
       <img src="../static/images/Logo.png" class="logo" alt="Logo" />
@@ -16,8 +16,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse font-weight-bold" id="navbarText">
-      {%if data and data['sessionLoggedIn']%} Welcome,
-      <span>{{data['userInfo']['fullName']}}</span>
+      {%if loggedIn%} Welcome,
+      <span>{{data['fullName']}}</span>
       {%endif%}
 
       <ul class="navbar-nav ml-auto">
@@ -26,14 +26,19 @@
             >Home <span class="sr-only">(current)</span></a
           >
         </li>
+        {%if loggedIn %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="/launch/">Launch</a>
+        </li>
+        {%endif%}
+        <li class="nav-item">
+          <a class="nav-link" href="#features">Features</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Our Team</a>
+          <a class="nav-link" href="#our-team">Our Team</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact us</a>
+          <a class="nav-link" href="#contact-us">Contact us</a>
         </li>
         {% if not loggedIn %}
         <li class="nav-item">

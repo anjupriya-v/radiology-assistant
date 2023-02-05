@@ -8,7 +8,23 @@
       Hand Gesture Recognition of radiology images through sterile browsing
     </p>
     <div class="home-page-button">
-      <button type="button" class="btn btn-info">Get Started</button>
+      {%if loggedIn %}
+      <button
+        type="button"
+        class="btn btn-info"
+        onclick="location.href = 'http://localhost:5000/launch/';"
+      >
+        Get Started
+      </button>
+      {%endif%} {%if not loggedIn %}
+      <button
+        type="button"
+        class="btn btn-info"
+        onclick="location.href = 'http://localhost:5000/login/';"
+      >
+        Get Started
+      </button>
+      {%endif%}
       <button
         type="button"
         class="btn btn-outline-info"
@@ -59,6 +75,7 @@
     </div>
   </div>
 </div>
+
 {%include "./features.html" %} {%include "./teammembers.html" %} {%include
 "./contact.html" %} {%include "./footer.html" %} {% if not loggedIn %}
 <div class="not-login">
@@ -66,10 +83,11 @@
     Please Login to use our Service
   </div>
 </div>
-{%endif%} {% if data and data['sessionLoggedIn'] %}
+{%endif%} {% if loggedIn %}
 <div class="not-login">
   <div class="alert alert-success" role="alert">
-    Logged in as {{data['userInfo']['email']}}
+    Logged in as {{data['email']}}
   </div>
 </div>
+
 {%endif%} {%endblock%}
