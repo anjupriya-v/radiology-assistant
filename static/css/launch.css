@@ -1,10 +1,15 @@
+body {
+  background-image: url("https://img3.goodfon.com/wallpaper/nbig/a/af/ruki-znaki-steny.jpg");
+  background-size: cover;
+}
 .loader {
-  border: 8px solid rgb(234, 234, 234);
-  border-top: 8px solid #3498db;
+  border: 10px solid rgb(199, 231, 251); /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
   border-radius: 50%;
   width: 50px;
-  height: 50px;
+  height: 80px;
   animation: spin 1s linear infinite;
+  margin: 0.5em;
 }
 
 @keyframes spin {
@@ -16,10 +21,6 @@
   }
 }
 
-body {
-  background-image: url("https://img3.goodfon.com/wallpaper/nbig/a/af/ruki-znaki-steny.jpg");
-  background-size: cover;
-}
 .no-image-section,
 .image-upload-div {
   display: flex;
@@ -33,7 +34,6 @@ body {
   align-items: center;
   margin-top: 7em;
   flex-direction: column;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
 .launch-container div {
   padding: 1.5em;
@@ -67,13 +67,12 @@ body {
   justify-content: center;
   flex-direction: column;
 }
+
 .launch-page-logo {
   width: 80px;
   height: 50px;
 }
-.upload-file-form form input {
-  margin-left: 6em;
-}
+
 .img-preview {
   width: 28em;
   height: 23em;
@@ -89,6 +88,32 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-.card-container {
+.launch-subDiv,
+.positions-subDiv {
   background-color: rgb(231, 246, 250) !important;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.positions-div {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+.positions-subDiv {
+  padding: 2em;
+}
+.positions-heading {
+  text-align: center;
+}
+.row-1,
+.row-2,
+.row-3 {
+  padding: 1em;
+}
+.row-1 {
+  margin-top: 2em;
+}
+.col-lg-5 .card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.no-idea {
+  margin-bottom: 1em;
 }

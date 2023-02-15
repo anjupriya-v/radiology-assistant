@@ -41,19 +41,10 @@ print("Loaded model from disk")
 def home():
     if(session and session['logged_in']):
 
-        return render_template('home.html',data=session['user'],loggedIn=session['logged_in'])#rendering the home page
+        return render_template('home.html',data=session['user'],loggedIn=session['logged_in'],show=True)#rendering the home page
     else:
-        return render_template('home.html',loggedIn=False)
-
-# @app.route('/login/',method=['GET'])
-# def login():
-#     return render_template('login.html')
-
-# @app.route('/signup/')
-# def signup():
-#     return render_template('signup.html')
-
-
+        return render_template('home.html',loggedIn=False,show=True)
+    
 def login_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
@@ -69,8 +60,6 @@ def start_session(userInfo):
     del userInfo['password']
     session['logged_in']=True
     session['user']=userInfo
-    print(session['logged_in'])
-    flash('This is a demo message.','login')
     return redirect(url_for('home'))
 
 
@@ -88,10 +77,10 @@ def login():
             if(user and pbkdf2_sha256.verify(password,user['password'])):
                 return start_session(user)
             else:
-                return render_template('login.html',loginMessage="Password is incorrect")
-        return render_template('login.html',loginMessage='Sorry, user with this email id does not exist')
+                return render_template('login.html',loginMessage="Password is incorrect",show=True)
+        return render_template('login.html',loginMessage='Sorry, user with this email id does not exist',show=True)
     else:
-        return render_template('login.html',loginMessage='Sign In Failed!')
+        return render_template('login.html',loginMessage='Sign In Failed!',show=True)
 
 
 @app.route('/signup/',methods=['POST','GET'])
@@ -108,11 +97,11 @@ def signup():
         }
         userInfo['password']=pbkdf2_sha256.encrypt(userInfo['password'])
         if(account.find_one({"email":userInfo['email']})):
-            return render_template('signup.html',signupMessage='Sorry,user with this email already exist')
+            return render_template('signup.html',signupMessage='Sorry,user with this email already exist',show=True)
         if(account.insert_one(userInfo)):
-            return render_template('login.html',signupSuccess='Your account has been registered! Please log in')
+            return render_template('login.html',signupSuccess='Your account has been registered! Please log in',show=True)
     else:
-        return render_template("signup.html",signupMessage='signup failed')
+        return render_template("signup.html",signupMessage='signup failed',show=True)
 
 
 @app.route('/logout/',methods=["GET"])
@@ -122,14 +111,10 @@ def logout():
     return redirect(url_for('login'))
 
 
-# @app.route('/intro') # routes to the intro page
-# def intro():
-#     return render_template('intro.html')#rendering the intro page
-
 @app.route('/launch/',methods=['GET','POST'])# routes to the index html
 @login_required
 def launch():
-    return render_template("launch.html")
+    return render_template("launch.html",data=session['user'],loggedIn=session['logged_in'],show=False)
 
 
 @app.route('/predict/',methods=['GET', 'POST'])# route to show the predictions in a web UI
