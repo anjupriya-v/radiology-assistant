@@ -1,0 +1,28 @@
+{
+  "features": [
+    {
+      "title": "Hand Gesture Based",
+      "description": "Because of hand gesture based, doctors provided with hygiene without touching the electronic gadgets for transforming the images",
+      "image": "../static/images/features-Image1.jpg",
+      "alt": "feature-image-1"
+    },
+    {
+      "title": "Time Saving System",
+      "description": "Doctors may not be lead to manually work on transforming the images. Our system will be done this transformation through hand gesture, so it will save the time.",
+      "image": "../static/images/features-Image2.jpg",
+      "alt": "feature-image-2"
+    },
+    {
+      "title": "Accurate System",
+      "description": "It will predict the doctor's hand gestures accurately and transform the images respectively. Accurate transformation is the main advantage",
+      "image": "../static/images/features-Image3.jpg",
+      "alt": "feature-image-3"
+    },
+    {
+      "title": "High Performance",
+      "description": "It will transform the images in a well optimized manner and transformation will take less time to perform.",
+      "image": "../static/images/features-Image4.jpg",
+      "alt": "feature-image-4"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "handPositions": [
+    {
+      "image": "../static/images/position-0.jpg",
+      "alt": "position-0",
+      "description": "This position will convert the images into rectangle"
+    },
+    {
+      "image": "../static/images/position-1.jpg",
+      "alt": "position-1",
+      "description": "This position will resize the image into (200,200) "
+    },
+    {
+      "image": "../static/images/position-2.jpg",
+      "alt": "position-2",
+      "description": "This position will rotate the image by -45॰ "
+    },
+    {
+      "image": "../static/images/position-3.jpg",
+      "alt": "position-3",
+      "description": "This position will make the image blur"
+    },
+    {
+      "image": "../static/images/position-4.jpg",
+      "alt": "position-4",
+      "description": "This position will resize the image into (400,400) "
+    },
+    {
+      "image": "../static/images/position-5.jpg",
+      "alt": "position-5",
+      "description": "This position will image convert image into grayscale."
+    }
+  ]
+}

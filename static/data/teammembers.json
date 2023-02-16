@@ -1,0 +1,25 @@
+{
+  "teammembers": [
+    {
+      "name": "Kanmani K",
+      "department": "Final Year CSE",
+      "email": "kanmanikcse2019@citchennai.net",
+      "github": "https://github.com/kanmani-kamalanathan",
+      "linkedin": "https://www.linkedin.com/in/kanmani-kamalanathan-4135261a9/"
+    },
+    {
+      "name": "Anju Priya V",
+      "department": "Final year CSE",
+      "email": "anjuvcse2019@citchennai.net",
+      "github": "https://github.com/anjupriya-v",
+      "linkedin": "https://www.linkedin.com/in/anju-priya-v-90169a18b"
+    },
+    {
+      "name": "Thadikaluru Ushaswini",
+      "department": "Final Year CSE",
+      "email": "tushaswini323@gmail.com",
+      "github": "https://github.com/Thadikaluruusha",
+      "linkedin": "https://www.linkedin.com/in/thadikaluru-ushaswini-4bb171248/"
+    }
+  ]
+}

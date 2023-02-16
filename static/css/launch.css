@@ -117,3 +117,8 @@ body {
 .no-idea {
   margin-bottom: 1em;
 }
+.col-div:nth-child(4),
+.col-div:nth-child(5),
+.col-div:nth-child(6) {
+  margin-top: 20px;
+}

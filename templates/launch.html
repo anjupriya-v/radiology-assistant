@@ -15,7 +15,10 @@
           <img src="../static/images/Logo.png" class="launch-page-logo" />
           <h2>Radiology Assistant</h2>
         </div>
-        <span class="no-idea">Don't know about hand positions? <a href="#positions"> Click here</a></span>
+        <span class="no-idea"
+          >Don't know about hand positions?
+          <a href="#positions"> Click here</a></span
+        >
         <h4>Choose file to upload</h4>
         <div class="upload-file-form">
           <form
@@ -54,116 +57,41 @@
         >
           Start!
         </button>
-      <div class="loader" style="display: none"></div>
-
+        <div class="loader" style="display: none"></div>
       </div>
-
     </div>
   </div>
 </div>
 <div class="positions-div" id="positions">
   <div class="container card positions-subDiv">
-    <h3 class="positions-heading">
-      Hand Positions for Transformations
-    </h3>
-    <hr>
+    <h3 class="positions-heading">Hand Positions for Transformations</h3>
+    <hr />
     <div class="container">
-      <div class="row row-1">
-        <div class="col-lg-5 offset-lg-1">
+      <div class="row">
+        {% for handposition in handpositions %}
+        <div class="col-lg-4 col-div">
           <div class="card" style="width: 18rem">
-            <img class="card-img-top" src="../static/images/position-0.jpg" alt="Card image cap" />
-            <hr>
+            <img
+              class="card-img-top"
+              src="{{handposition.image}}"
+              alt="{{handposition.alt}}"
+            />
+            <hr />
             <div class="card-body">
-              <p class="card-text">
-                This position will convert the images into rectangle
-
-              </p>
+              <p class="card-text">{{handposition.description}}</p>
             </div>
           </div>
         </div>
-        <div class="col-lg-5">
-          <div class="card" style="width: 18rem">
-            <img class="card-img-top" src="../static/images/position-1.jpg" alt="Card image cap" />
-            <hr>
-
-            <div class="card-body">
-              <p class="card-text">
-                This position will resize the image into (200,200) 
-
-              </p>
-            </div>
-          </div>
-        </div>
-
+        {% endfor %}
       </div>
-
-      <div class="row row-2">
-        <div class="col-lg-5 offset-lg-1">
-          <div class="card" style="width: 18rem">
-            <img class="card-img-top" src="../static/images/position-2.jpg" alt="Card image cap" />
-            <hr>
-
-            <div class="card-body">
-              <p class="card-text">
-                This position will rotate the image by -45॰ 
-
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-5">
-          <div class="card" style="width: 18rem">
-            <img class="card-img-top" src="../static/images/position-3.jpg" alt="Card image cap" />
-            <hr>
-
-            <div class="card-body">
-              <p class="card-text">
-                This position will make the image blur
-
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="row row-3">
-        <div class="col-lg-5 offset-lg-1">
-          <div class="card" style="width: 18rem">
-            <img class="card-img-top" src="../static/images/position-4.jpg" alt="Card image cap" />
-            <hr>
-
-            <div class="card-body">
-              <p class="card-text">
-                This position will resize the image into (400,400) 
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-5">
-          <div class="card" style="width: 18rem">
-            <img class="card-img-top" src="../static/images/position-5.jpg" alt="Card image cap" />
-            <hr>
-
-            <div class="card-body">
-              <p class="card-text">
-                This position will image convert image into grayscale.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
     </div>
   </div>
 </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  <script
-    src="{{ url_for('static', filename='js/launch.js') }}"
-    type="text/javascript"
-  ></script>
+<script
+  src="{{ url_for('static', filename='js/launch.js') }}"
+  type="text/javascript"
+></script>
 
-  {%endblock%}
-
+{%endblock%}

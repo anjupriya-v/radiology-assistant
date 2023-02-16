@@ -19,7 +19,12 @@ import pymongo
 import json
 from os.path import join, dirname
 from dotenv import load_dotenv
-
+featuresDataFile = open('./static/data/features.json')
+featuresData = json.load(featuresDataFile)
+teamMembersDataFile = open('./static/data/teammembers.json')
+teamMembersData = json.load(teamMembersDataFile)
+handPositionsDataFile = open('./static/data/handPositions.json')
+handPositionsData = json.load(handPositionsDataFile)
 
 
 dotenv_path = join(dirname(__file__), '.env')
@@ -41,9 +46,9 @@ print("Loaded model from disk")
 def home():
     if(session and session['logged_in']):
 
-        return render_template('home.html',data=session['user'],loggedIn=session['logged_in'],show=True)#rendering the home page
+        return render_template('home.html',data=session['user'],loggedIn=session['logged_in'],show=True,features=featuresData['features'],teammembers=teamMembersData['teammembers'])#rendering the home page
     else:
-        return render_template('home.html',loggedIn=False,show=True)
+        return render_template('home.html',loggedIn=False,show=True,features=featuresData['features'],teammembers=teamMembersData['teammembers'])
     
 def login_required(f):
     @wraps(f)
@@ -114,7 +119,7 @@ def logout():
 @app.route('/launch/',methods=['GET','POST'])# routes to the index html
 @login_required
 def launch():
-    return render_template("launch.html",data=session['user'],loggedIn=session['logged_in'],show=False)
+    return render_template("launch.html",data=session['user'],loggedIn=session['logged_in'],show=False,handpositions=handPositionsData['handPositions'])
 
 
 @app.route('/predict/',methods=['GET', 'POST'])# route to show the predictions in a web UI

@@ -5,78 +5,21 @@
 <div class="container feature-div py-2 mb-4" id="features">
   <h1 class="feature-heading">Features of our System</h1>
   <!-- timeline item 1 -->
-
+  {% for feature in features %}
   <div class="row feature">
     <div class="col-lg-6 feature-content">
-      <h4 class="feature-title">Hand Gesture Based</h4>
-      <p class="feature-text">
-        Because of hand gesture based, doctors provided with hygiene without
-        touching the electronic gadgets for transforming the images
-      </p>
+      <h4 class="feature-title">{{feature.title}}</h4>
+      <p class="feature-text">{{feature.description}}</p>
     </div>
     <div class="col-lg-6">
       <div class="card">
         <img
           class="card-img-top card-image"
-          src="../static/images/features-Image1.jpg"
-          alt="Card image cap"
+          src="{{feature.image}}"
+          alt="{{feature.alt}}"
         />
       </div>
     </div>
   </div>
-  <div class="row feature">
-    <div class="col-lg-6">
-      <div class="card">
-        <img
-          class="card-img-top card-image"
-          src="../static/images/features-Image2.jpg"
-          alt="Card image cap"
-        />
-      </div>
-    </div>
-    <div class="col-lg-6 feature-content">
-      <h4 class="feature-title">Time Saving System</h4>
-      <p class="feature-text">
-        Doctors may not be lead to manually work on transforming the images. Our
-        system will be done this transformation through hand gesture, so it will
-        save the time
-      </p>
-    </div>
-  </div>
-  <div class="row feature">
-    <div class="col-lg-6 feature-content">
-      <h4 class="feature-title">Accurate System</h4>
-      <p class="feature-text">
-        It will predict the doctor's hand gestures accurately and transform the
-        images respectively. Accurate transformation is the main advantage
-      </p>
-    </div>
-    <div class="col-lg-6">
-      <div class="card">
-        <img
-          class="card-img-top card-image"
-          src="../static/images/features-Image3.jpg"
-          alt="Card image cap"
-        />
-      </div>
-    </div>
-  </div>
-  <div class="row feature">
-    <div class="col-lg-6">
-      <div class="card">
-        <img
-          class="card-img-top card-image"
-          src="../static/images/features-Image4.jpg"
-          alt="Card image cap"
-        />
-      </div>
-    </div>
-    <div class="col-lg-6 feature-content">
-      <h4 class="feature-title">High Performance</h4>
-      <p class="feature-text">
-        It will transform the images in a well optimized manner and
-        transformation will take less time to perform
-      </p>
-    </div>
-  </div>
+  {%endfor %}
 </div>
