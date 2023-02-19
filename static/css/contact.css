@@ -92,4 +92,8 @@
 .textAreaError {
   color: red;
   display: none;
+  margin-bottom: 1em;
+}
+.contact-success-message {
+  display: none;
 }

@@ -18,7 +18,7 @@
           <div>
             <input
               type="text"
-              class="form-control rounded border-white mb-3 form-input"
+              class="form-control rounded border-white mb-3 form-input name"
               id="name"
               placeholder="Name"
               required
@@ -28,7 +28,7 @@
           <div>
             <input
               type="email"
-              class="form-control rounded border-white mb-3 form-input"
+              class="form-control rounded border-white mb-3 form-input email"
               placeholder="Email"
               required
             />
@@ -37,15 +37,16 @@
           <div>
             <textarea
               id="message"
-              class="form-control rounded border-white mb-3 form-text-area"
+              class="form-control rounded border-white mb-3 form-text-area message
               rows="5"
               cols="30"
               placeholder="Message"
-              name="textArea"
+              name="message"
               required
             ></textarea>
-            <span class="textAreaError"></span>
+            <span class="messageError"></span>
           </div>
+          <div class="alert alert-success contact-success-message" role="alert">Thank you! we will reach you shortly</div>
           <div class="submit-button-wrapper">
             <input type="submit" value="Send" />
           </div>
@@ -54,4 +55,8 @@
     </div>
   </div>
 </div>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"
+></script>
 <script src="../static/js/contact.js"></script>
