@@ -145,3 +145,8 @@ a {
   height: 30px;
   margin-right: 0.5em;
 }
+.emailError,
+.passwordError {
+  color: red;
+  display: none;
+}

@@ -145,3 +145,9 @@ a {
   justify-content: center;
   flex-direction: column;
 }
+.nameError,
+.emailError,
+.passwordError {
+  color: red;
+  display: none;
+}

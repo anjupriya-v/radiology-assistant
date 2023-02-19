@@ -15,6 +15,8 @@
     <h2>Sign Up</h2>
 
     <form
+      name="form"
+      class="submit-register-form"
       action="http://localhost:5000/signup/"
       autocomplete="off"
       method="POST"
@@ -23,6 +25,7 @@
         <label for="name">Name</label>
         <i class="fa fa-user" aria-hidden="true"></i>
         <input type="name" name="name" id="name" placeholder="Name" required />
+        <span class="nameError"></span>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
@@ -34,6 +37,7 @@
           placeholder="Email"
           required
         />
+        <span class="emailError"></span>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -42,9 +46,10 @@
           type="password"
           id="password"
           name="password"
-          placeholder="Your password"
+          placeholder="Password"
           required
         />
+        <span class="passwordError"></span>
       </div>
       {%if signupMessage %}
       <div class="alert alert-danger" role="alert">{{signupMessage}}</div>
@@ -64,4 +69,5 @@
     </div>
   </div>
 </div>
+<script src="../static/js/signup.js"></script>
 {%endblock%}
