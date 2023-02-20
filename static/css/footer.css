@@ -11,6 +11,7 @@ ul li {
 /* main footer css */
 #primary-footer {
   background-color: #edf7fa;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .footer-widget-area {

@@ -45,7 +45,7 @@ print("Loaded model from disk")
 @app.route('/')# route to display the home page
 def home():
     if(session and session['logged_in']):
-
+        print(session['logged_in'])
         return render_template('home.html',data=session['user'],loggedIn=session['logged_in'],show=True,features=featuresData['features'],teammembers=teamMembersData['teammembers'])#rendering the home page
     else:
         return render_template('home.html',loggedIn=False,show=True,features=featuresData['features'],teammembers=teamMembersData['teammembers'])
@@ -125,10 +125,9 @@ def launch():
 @app.route('/predict/',methods=['GET', 'POST'])# route to show the predictions in a web UI
 @login_required
 def predict():
-    if request.method == 'POST':
-        print("inside image")
-        f = request.files['image']
 
+    if request.method == 'POST':
+        f = request.files['image']
         basepath = os.path.dirname(__file__)
         file_path = os.path.join(basepath, 'uploads', secure_filename(f.filename))
         f.save(file_path)   
