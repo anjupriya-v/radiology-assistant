@@ -1,15 +1,12 @@
 from functools import wraps
-from http.client import HTTPException
-from flask import Flask,render_template,request,redirect,session,url_for,flash
-# Flask-It is our framework which we are going to use to run/serve our application.
-#request-for accessing file which was uploaded by the user on our application.
+from flask import Flask,render_template,request,redirect,session,url_for
 import operator
-import cv2 # opencv library
+import cv2
+from flask_cors import CORS # opencv library
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import numpy as np
 from passlib.hash import  pbkdf2_sha256
-# from tensorflow.keras.models import load_model#to load our trained model
 from tensorflow import keras
 from keras.layers import Dense
 from keras.models import Sequential, load_model
@@ -37,6 +34,7 @@ account=db.Account
 app = Flask(__name__,template_folder="templates") # initializing a flask app
 SECRET_KEY = os.environ.get("SECRET_KEY")
 app.secret_key=SECRET_KEY
+CORS(app)
 # Loading the model
 model=load_model('gesture.h5')
 print("Loaded model from disk")
@@ -44,8 +42,7 @@ print("Loaded model from disk")
 
 @app.route('/')# route to display the home page
 def home():
-    if(session and session['logged_in']):
-        print(session['logged_in'])
+    if(session):
         return render_template('home.html',data=session['user'],loggedIn=session['logged_in'],show=True,features=featuresData['features'],teammembers=teamMembersData['teammembers'])#rendering the home page
     else:
         return render_template('home.html',loggedIn=False,show=True,features=featuresData['features'],teammembers=teamMembersData['teammembers'])
