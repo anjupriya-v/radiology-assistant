@@ -1,9 +1,10 @@
 (function () {
-  emailjs.init("PublicKey_XXXXXXXXXXXXXX");
+  emailjs.init("publickey_XXXXXXXXX");
 })();
 document
   .getElementsByClassName("submit-contact-form")[0]
   .addEventListener("submit", (e) => {
+    document.getElementById("submit-button").disabled = true;
     e.preventDefault();
     var name = document.getElementsByClassName("name")[0].value;
     var email = document.getElementsByClassName("email")[0].value;
@@ -46,7 +47,7 @@ document
       message: message,
     };
     emailjs
-      .send("service_XXXXXX", "template_XXXXXXX", contactParams)
+      .send("service_xxxxxx", "template_xxxxxx", contactParams)
       .then(function (res) {
         document.getElementsByClassName(
           "contact-success-message"
@@ -56,6 +57,7 @@ document
             "contact-success-message"
           )[0].style.display = "none";
         }, 5000);
+        document.getElementById("submit-button").disabled = false;
         document.getElementsByClassName("contact-form")[0].reset();
       });
     return true;
